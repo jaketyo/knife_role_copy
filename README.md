@@ -5,72 +5,69 @@ Get data from one role, setup a new role with that data and a new name.
 
 This plugin will actively refuse to create a role with a name that already exists.
 
-INSTALL
+Installation
 =======
 
     $ git clone git@github.com:benjaminws/knife_role_copy.git
     $ mkdir -p ~/.chef/plugins/knife/
     $ cp knife_role_copy/role_copy.rb ~/.chef/plugins/knife/
 
-USAGE
+Usage
 =====
 
-Help output
+Help output:
 
     $ knife role copy
     USAGE: knife role copy ROLE NEW_ROLE (options)
 
-EXAMPLE
+Example
 =======
 
-Take a look at this role.
+This example begins with the following role.
 
-    $ knife role show -Fj test_role
+    $ knife role show -Fj SOME-ROLE-NAME
     {
-      "name": "test_role",
-      "default_attributes": {
-        "your": "mom"
-      },
+      "name": "SOME-ROLE-NAME",
+      "description": "Some Role Description",
       "json_class": "Chef::Role",
-      "env_run_lists": {
+      "default_attributes": {
+        
       },
-      "run_list": [
-        "recipe[fun_recipe]"
-      ],
-      "description": "THIS IS A TEST ROLE, LOL",
-      "chef_type": "role",
       "override_attributes": {
+        
+      },
+      "chef_type": "role",
+      "run_list": [
+        
+      ],
+      "env_run_lists": {
+        
       }
     }
 
-Now copy it.
+Execute `knife role copy` to copy the role.
 
-    $ knife role copy test_role test_role_copy
-    # DROPS YOU INTO $EDITOR
-    # EDIT TO YOUR HEARTS CONTENT
+    $ knife role copy SOME-ROLE-NAME SOME-ROLE-NAME-2
+    # This opens an editor as defined by your $EDITOR environment variable.
 
-Magic happens.
+After the editor is saved and closed, you can print the new role to inspect the changes.
 
-    $ knife role show -Fj test_role_copy
+    $ knife role show -Fj SOME-ROLE-NAME-2
     {
-      "name": "test_role_copy",
-      "default_attributes": {
-        "your": "mom"
-      },
+      "name": "SOME-ROLE-NAME-2",
+      "description": "Some Role Description (Copy from SOME-ROLE-NAME)",
       "json_class": "Chef::Role",
-      "env_run_lists": {
+      "default_attributes": {
+
       },
-      "run_list": [
-        "recipe[fun_recipe]"
-      ],
-      "description": "THIS IS A TEST ROLE, LOL (Copy from test_role)",
-      "chef_type": "role",
       "override_attributes": {
+
+      },
+      "chef_type": "role",
+      "run_list": [
+
+      ],
+      "env_run_lists": {
+
       }
     }
-
-
-NOTE
-====
-
-LOLJK

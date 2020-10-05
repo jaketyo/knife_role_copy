@@ -8,7 +8,7 @@ This plugin will actively refuse to create a role with a name that already exist
 Installation
 =======
 
-    $ git clone git@github.com:jaketyo/knife_role_copy.git
+    $ git clone https://github.com/jaketyo/knife_role_copy.git
     $ mkdir -p ~/.chef/plugins/knife/
     $ cp knife_role_copy/role_copy.rb ~/.chef/plugins/knife/
 
